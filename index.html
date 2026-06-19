@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mary Tarpah Mindset — Dein Kopf entscheidet zuerst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bone:#15181A;
+    --paper:#1D2120;
+    --ink:#F5F3EE;
+    --ink-soft:#ABB0A7;
+    --fog:#2A2F2D;
+    --fog-dark:#6B716C;
+    --amber:#D8A650;
+    --amber-deep:#E8C079;
+    --amber-soft:#4A3A1E;
+    --sage:#8FA083;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bone);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    line-height:1.12;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--amber-deep);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:18px;height:1px;
+    background:var(--amber-deep);
+    display:inline-block;
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  img{max-width:100%;display:block;}
+  button{font-family:inherit;cursor:pointer;}
+  :focus-visible{outline:2px solid var(--amber-deep);outline-offset:3px;}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(21,24,26,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--fog);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 28px;max-width:var(--maxw);margin:0 auto;
+  }
+  .logo{
+    font-family:'Fraunces',serif;font-weight:600;font-size:22px;
+    width:42px;height:42px;border:1.5px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    border-radius:50%;
+    flex-shrink:0;
+  }
+  .brandname{
+    font-family:'IBM Plex Mono',monospace;font-size:13px;
+    letter-spacing:0.06em;margin-left:12px;
+  }
+  .nav-left{display:flex;align-items:center;}
+  nav.links{display:flex;gap:34px;font-size:14.5px;}
+  nav.links a{text-decoration:none;color:var(--ink-soft);transition:color .15s;}
+  nav.links a:hover{color:var(--ink);}
+  .nav-cta{
+    font-family:'IBM Plex Mono',monospace;font-size:13px;
+    background:var(--ink);color:var(--bone);
+    padding:10px 18px;text-decoration:none;
+    border-radius:2px;
+  }
+  .menu-btn{display:none;background:none;border:none;font-size:22px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:84px 0 60px;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr 0.95fr;gap:60px;align-items:center;
+  }
+  .hero h1{font-size:clamp(36px,5vw,58px);}
+  .hero h1 em{font-style:italic;color:var(--amber-deep);}
+  .hero p.lede{
+    margin-top:22px;font-size:18px;color:var(--ink-soft);max-width:46ch;
+  }
+  .hero-ctas{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--ink);color:var(--bone);border:none;
+    padding:15px 26px;font-size:14.5px;text-decoration:none;
+    border-radius:2px;display:inline-block;
+  }
+  .btn-ghost{
+    background:transparent;border:1px solid var(--ink);color:var(--ink);
+    padding:14px 25px;font-size:14.5px;text-decoration:none;border-radius:2px;display:inline-block;
+  }
+
+  /* Signature slider element */
+  .shift-card{
+    background:var(--paper);border:1px solid var(--fog);
+    padding:34px;border-radius:4px;position:relative;overflow:hidden;
+  }
+  .shift-bg{
+    position:absolute;inset:0;opacity:0.28;pointer-events:none;
+    transition:background .05s linear;
+  }
+  .shift-content{position:relative;z-index:1;}
+  .shift-label-row{
+    display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em;margin-bottom:18px;
+  }
+  .shift-phrase-box{
+    height:96px;position:relative;display:flex;align-items:center;justify-content:center;
+    text-align:center;border-bottom:1px solid var(--fog);margin-bottom:20px;
+  }
+  .shift-phrase{
+    position:absolute;font-family:'Fraunces',serif;font-style:italic;font-size:22px;
+    transition:opacity .1s linear;width:100%;
+  }
+  .shift-phrase.neg{color:var(--ink-soft);}
+  .shift-phrase.pos{color:var(--amber-deep);}
+  input[type=range].shift-slider{
+    -webkit-appearance:none;width:100%;height:2px;background:var(--fog-dark);outline:none;margin:8px 0 4px;
+  }
+  input[type=range].shift-slider::-webkit-slider-thumb{
+    -webkit-appearance:none;width:18px;height:18px;border-radius:50%;
+    background:var(--paper);border:2px solid var(--ink);cursor:pointer;margin-top:-8px;
+  }
+  input[type=range].shift-slider::-moz-range-thumb{
+    width:16px;height:16px;border-radius:50%;background:var(--paper);border:2px solid var(--ink);cursor:pointer;
+  }
+  .shift-caption{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fog-dark);text-align:center;margin-top:14px;
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:74px 0;border-top:1px solid var(--fog);}
+  section.no-border{border-top:none;}
+  .section-head{max-width:640px;margin-bottom:46px;}
+  .section-head h2{font-size:clamp(28px,3.4vw,38px);margin-top:14px;}
+
+  /* problem */
+  .problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;}
+  .problem-grid p{color:var(--ink-soft);font-size:17px;}
+  .problem-grid .quote{
+    font-family:'Fraunces',serif;font-style:italic;font-size:24px;color:var(--ink);line-height:1.4;
+  }
+
+  /* about */
+  .about{display:grid;grid-template-columns:0.85fr 1.15fr;gap:54px;align-items:center;}
+  .about-card{
+    background:var(--paper);border:1px solid var(--fog);padding:40px 30px;text-align:center;border-radius:4px;
+  }
+  .about-mark{
+    width:76px;height:76px;border-radius:50%;border:1.5px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;
+    font-size:30px;margin:0 auto 18px;
+  }
+  .about-card .name{font-family:'Fraunces',serif;font-size:19px;}
+  .about-card .role{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-soft);margin-top:4px;}
+  .about p{color:var(--ink-soft);font-size:16.5px;}
+
+  /* pricing */
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:stretch;}
+  .tier{
+    background:var(--paper);border:1px solid var(--fog);border-radius:4px;
+    padding:32px 26px;display:flex;flex-direction:column;
+  }
+  .tier.featured{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink);}
+  .tier .eyebrow{margin-bottom:14px;}
+  .tier h3{font-size:23px;}
+  .tier .price{
+    font-family:'IBM Plex Mono',monospace;font-size:28px;margin-top:10px;color:var(--amber-deep);
+  }
+  .tier .price small{font-size:13px;color:var(--ink-soft);font-family:'Inter',sans-serif;}
+  .tier .desc{color:var(--ink-soft);font-size:14.5px;margin-top:12px;min-height:54px;}
+  .tier ul{list-style:none;padding:0;margin:22px 0;flex-grow:1;}
+  .tier li{
+    padding:9px 0;border-top:1px solid var(--fog);font-size:14.5px;display:flex;gap:10px;
+  }
+  .tier li:before{content:"—";color:var(--fog-dark);flex-shrink:0;}
+  .consent{margin:16px 0 14px;}
+  .consent label{
+    display:flex;gap:10px;font-size:12.5px;color:var(--ink-soft);line-height:1.5;cursor:pointer;
+  }
+  .consent input{margin-top:3px;flex-shrink:0;}
+  .consent a{color:var(--amber-deep);}
+  .btn-buy{
+    width:100%;background:var(--fog);color:var(--ink-soft);border:none;
+    padding:14px;font-size:14px;border-radius:2px;font-family:'IBM Plex Mono',monospace;
+    transition:background .15s,color .15s;
+  }
+  .btn-buy:not(:disabled){background:var(--ink);color:var(--bone);cursor:pointer;}
+  .tier-note{
+    font-size:12px;color:var(--ink-soft);margin-top:10px;min-height:16px;
+  }
+  .pricing-foot-note{
+    margin-top:30px;font-size:13.5px;color:var(--ink-soft);max-width:70ch;border-left:2px solid var(--amber-soft);padding-left:16px;
+  }
+
+  /* testimonials */
+  .testi-flag{
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-soft);
+    background:var(--amber-soft);display:inline-block;padding:4px 10px;border-radius:2px;margin-bottom:20px;
+  }
+  .testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .testi{background:var(--paper);border:1px solid var(--fog);padding:26px;border-radius:4px;}
+  .testi p{font-family:'Fraunces',serif;font-style:italic;font-size:16.5px;}
+  .testi .who{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-soft);margin-top:14px;}
+
+  /* note box */
+  .note-box{
+    background:var(--paper);border:1px solid var(--fog);border-left:3px solid var(--sage);
+    padding:24px 26px;border-radius:2px;font-size:14.5px;color:var(--ink-soft);
+  }
+  .note-box strong{color:var(--ink);}
+
+  footer{border-top:1px solid var(--fog);padding:50px 0 36px;}
+  .footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;}
+  .footer-col h4{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);font-weight:500;margin-bottom:14px;}
+  .footer-col a{display:block;text-decoration:none;color:var(--ink-soft);font-size:14px;margin-bottom:8px;}
+  .footer-col a:hover{color:var(--ink);}
+  .footer-bottom{margin-top:40px;font-size:12.5px;color:var(--fog-dark);font-family:'IBM Plex Mono',monospace;}
+
+  /* legal pages */
+  .legal-view{padding:60px 0 100px;display:none;}
+  .legal-view.active{display:block;}
+  #view-home.active{display:block;}
+  #view-home{display:none;}
+  .legal-wrap{max-width:760px;margin:0 auto;padding:0 28px;}
+  .legal-wrap h1{font-size:32px;margin-bottom:8px;}
+  .legal-wrap .updated{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);margin-bottom:40px;display:block;}
+  .legal-wrap h2{font-size:19px;margin-top:38px;margin-bottom:12px;font-family:'Inter',sans-serif;font-weight:700;}
+  .legal-wrap p, .legal-wrap li{color:var(--ink-soft);font-size:15px;margin-bottom:12px;}
+  .legal-wrap ul{padding-left:20px;}
+  .legal-wrap .back-link{
+    font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;color:var(--ink-soft);
+    display:inline-block;margin-bottom:30px;
+  }
+  .legal-wrap table{width:100%;border-collapse:collapse;margin:14px 0;}
+  .legal-wrap td{border:1px solid var(--fog);padding:10px;font-size:13.5px;color:var(--ink-soft);vertical-align:top;}
+  .legal-wrap .formular{background:var(--paper);border:1px solid var(--fog);padding:20px;margin-top:10px;}
+  .legal-wrap blockquote{
+    border-left:2px solid var(--amber-soft);padding-left:16px;margin:18px 0;color:var(--ink-soft);
+  }
+
+  @media(max-width:880px){
+    nav.links{display:none;}
+    .menu-btn{display:block;}
+    .hero{padding-top:50px;}
+    .hero-grid{grid-template-columns:1fr;}
+    .problem-grid,.about,.tiers,.testimonials{grid-template-columns:1fr;}
+    .about{text-align:left;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="nav-left">
+      <div class="logo">MT</div>
+      <span class="brandname">MARY&nbsp;TARPAH<br>MINDSET</span>
+    </div>
+    <nav class="links">
+      <a href="#home" onclick="go('home')">Start</a>
+      <a href="#home" onclick="go('home');setTimeout(()=>document.getElementById('about').scrollIntoView(),50)">Über mich</a>
+      <a href="#home" onclick="go('home');setTimeout(()=>document.getElementById('programme').scrollIntoView(),50)">Programme</a>
+      <a href="#home" onclick="go('home');setTimeout(()=>document.getElementById('kontakt').scrollIntoView(),50)">Kontakt</a>
+    </nav>
+    <a class="nav-cta" href="#home" onclick="go('home');setTimeout(()=>document.getElementById('programme').scrollIntoView(),50)">Programme ansehen</a>
+  </div>
+</header>
+
+<!-- ====================== HOME ====================== -->
+<main id="view-home" class="active">
+
+  <section class="hero no-border">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Mindset &amp; Persönlichkeitsentwicklung</span>
+        <h1 style="margin-top:18px;">Dein Kopf entscheidet, <em>bevor</em> du es tust.</h1>
+        <p class="lede">Mary Tarpah Mindset zeigt dir, wie du negative Denkmuster erkennst, durchbrichst — und durch welche ersetzt, die dich tatsächlich weiterbringen. Keine Floskeln. Klare Übungen, die du sofort anwenden kannst.</p>
+        <div class="hero-ctas">
+          <a class="btn-primary" href="#home" onclick="go('home');setTimeout(()=>document.getElementById('programme').scrollIntoView(),50)">Programme ansehen</a>
+          <a class="btn-ghost" href="#home" onclick="go('home');setTimeout(()=>document.getElementById('about').scrollIntoView(),50)">Über Mary Tarpah</a>
+        </div>
+      </div>
+
+      <div class="shift-card">
+        <div class="shift-bg" id="shiftBg"></div>
+        <div class="shift-content">
+          <div class="shift-label-row"><span>Negativ</span><span>Positiv</span></div>
+          <div class="shift-phrase-box">
+            <span class="shift-phrase neg" id="phraseNeg">„Das schaffe ich sowieso nicht.“</span>
+            <span class="shift-phrase pos" id="phrasePos" style="opacity:0;">„Ich lerne gerade, wie es geht.“</span>
+          </div>
+          <input type="range" min="0" max="100" value="0" class="shift-slider" id="shiftSlider" aria-label="Gedanken verschieben von negativ zu positiv">
+          <div class="shift-caption">Zieh den Regler — so fühlt sich Reframing an</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="problem">
+    <div class="wrap problem-grid">
+      <div>
+        <span class="eyebrow">Das Problem</span>
+        <p class="quote" style="margin-top:18px;">Der innere Kritiker meldet sich zuerst. Vor dem Gespräch. Vor der Entscheidung. Vor dem ersten Schritt.</p>
+      </div>
+      <div style="display:flex;align-items:center;">
+        <p>Negative Denkmuster sind selten Charakter — meistens sind sie trainiert. Jahrelang wiederholt, bis sie sich wie Wahrheit anfühlen. Genau deshalb lassen sie sich auch wieder umtrainieren: mit Wiederholung, Struktur und den richtigen Fragen zur richtigen Zeit.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about">
+      <div class="about-card">
+        <div class="about-mark">MT</div>
+        <div class="name">Mary Tarpah</div>
+        <div class="role">MINDSET &amp; PERSÖNLICHKEITSENTWICKLUNG</div>
+      </div>
+      <div>
+        <span class="eyebrow">Über mich</span>
+        <h2 style="margin-top:14px;font-size:30px;">Klare Übungen statt leerer Versprechen.</h2>
+        <p style="margin-top:16px;">Mary Tarpah beschäftigt sich seit Jahren intensiv mit der Frage, wie unser Denken unser Handeln formt. Mary Tarpah Mindset ist aus der Überzeugung entstanden, dass jeder Mensch lernen kann, destruktive Gedankenmuster zu erkennen und bewusst durch neue zu ersetzen — Schritt für Schritt, mit konkreten Übungen statt vagen Versprechen.</p>
+        <p><strong style="color:var(--ink);">Wichtiger Hinweis:</strong> Die Inhalte sind Materialien zur persönlichen Weiterentwicklung und ersetzen keine psychotherapeutische oder ärztliche Behandlung. Bei anhaltenden psychischen Belastungen empfiehlt sich der Weg zu einer Ärztin/einem Arzt oder Psychotherapeutin/Psychotherapeuten.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="programme">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Programme</span>
+        <h2>Drei Wege, dein Denken neu zu trainieren.</h2>
+      </div>
+
+      <div class="tiers">
+
+        <!-- TIER 1 -->
+        <div class="tier">
+          <span class="eyebrow">Fundament</span>
+          <h3>Fundament</h3>
+          <div class="desc">Der Einstieg ins Reframing — für alle, die selbstständig starten wollen.</div>
+          <div class="price">500&nbsp;€ <small>einmalig</small></div>
+          <ul>
+            <li>PDF-Workbook, ca. 60 Seiten</li>
+            <li>Grundlagen: wie negative Denkmuster entstehen</li>
+            <li>21-Tage Reframing-Übungsplan</li>
+            <li>Journaling-Vorlagen zum Ausdrucken</li>
+            <li>Skript für eine tägliche Affirmationsroutine</li>
+          </ul>
+          <div class="consent">
+            <label>
+              <input type="checkbox" class="consent-check" data-tier="Fundament" data-price="500 €" onchange="toggleBuy(this)">
+              Ich stimme ausdrücklich zu, dass mit der Bereitstellung der digitalen Inhalte vor Ablauf der Widerrufsfrist begonnen wird, und weiß, dass ich dadurch mein Widerrufsrecht verliere. <a href="#widerruf" onclick="event.stopPropagation();go('widerruf')">Mehr dazu</a>
+            </label>
+          </div>
+          <button class="btn-buy" disabled data-tier="Fundament" data-price="500 €" onclick="buy(this)">Programm wählen — 500&nbsp;€</button>
+          <div class="tier-note"></div>
+        </div>
+
+        <!-- TIER 2 -->
+        <div class="tier featured">
+          <span class="eyebrow">Transformation</span>
+          <h3>Transformation</h3>
+          <div class="desc">Für alle, die ihr Denken über mehrere Monate strukturiert verändern wollen.</div>
+          <div class="price">2.500&nbsp;€ <small>einmalig</small></div>
+          <ul>
+            <li>Alles aus „Fundament“</li>
+            <li>3-teiliges Workbook-System, ca. 180 Seiten</li>
+            <li>Themen: Glaubenssätze, Emotionsregulation, zielfokussiertes Denken</li>
+            <li>12-Wochen-Strukturplan mit wöchentlichen Reflexionsbögen</li>
+            <li>Fortschritts-Tracking-Sheets</li>
+          </ul>
+          <div class="consent">
+            <label>
+              <input type="checkbox" class="consent-check" data-tier="Transformation" data-price="2.500 €" onchange="toggleBuy(this)">
+              Ich stimme ausdrücklich zu, dass mit der Bereitstellung der digitalen Inhalte vor Ablauf der Widerrufsfrist begonnen wird, und weiß, dass ich dadurch mein Widerrufsrecht verliere. <a href="#widerruf" onclick="event.stopPropagation();go('widerruf')">Mehr dazu</a>
+            </label>
+          </div>
+          <button class="btn-buy" disabled data-tier="Transformation" data-price="2.500 €" onclick="buy(this)">Programm wählen — 2.500&nbsp;€</button>
+          <div class="tier-note"></div>
+        </div>
+
+        <!-- TIER 3 -->
+        <div class="tier">
+          <span class="eyebrow">Mastery</span>
+          <h3>Mastery</h3>
+          <div class="desc">Das komplette System — für alle, die ihr Mindset langfristig und ganzheitlich neu aufbauen wollen.</div>
+          <div class="price">14.500&nbsp;€ <small>einmalig</small></div>
+          <ul>
+            <li>Komplette Mindset-Library: 6 Workbooks, 400+ Seiten</li>
+            <li>Themen: Ängste, Glaubenssätze, Selbstwert, Erfolgsdenken, Beziehungen, Routinen</li>
+            <li>6-Monats-Begleitstruktur mit monatlichem Schwerpunktthema</li>
+            <li>Umfangreiche Vorlagen-Bibliothek</li>
+            <li>Lifetime-Zugriff auf künftige Material-Updates</li>
+          </ul>
+          <div class="consent">
+            <label>
+              <input type="checkbox" class="consent-check" data-tier="Mastery" data-price="14.500 €" onchange="toggleBuy(this)">
+              Ich stimme ausdrücklich zu, dass mit der Bereitstellung der digitalen Inhalte vor Ablauf der Widerrufsfrist begonnen wird, und weiß, dass ich dadurch mein Widerrufsrecht verliere. <a href="#widerruf" onclick="event.stopPropagation();go('widerruf')">Mehr dazu</a>
+            </label>
+          </div>
+          <button class="btn-buy" disabled data-tier="Mastery" data-price="14.500 €" onclick="buy(this)">Programm wählen — 14.500&nbsp;€</button>
+          <div class="tier-note"></div>
+        </div>
+
+      </div>
+
+      <p class="pricing-foot-note">Alle Preise verstehen sich gemäß § 19 UStG ohne Umsatzsteuerausweis (vorbehaltlich steuerlicher Prüfung). Die Inhalte werden nach Zahlungseingang per E-Mail zum Download bereitgestellt.</p>
+    </div>
+  </section>
+
+  <section id="stimmen">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Stimmen</span>
+        <h2>Was Teilnehmende berichten.</h2>
+      </div>
+      <span class="testi-flag">Platzhalter — vor Veröffentlichung durch echte, freigegebene Erfahrungsberichte ersetzen</span>
+      <div class="testimonials">
+        <div class="testi">
+          <p>„Ich habe zum ersten Mal verstanden, woher meine negativen Gedanken eigentlich kommen — und was ich konkret dagegen tun kann.“</p>
+          <div class="who">— Platzhalter-Stimme, Fundament</div>
+        </div>
+        <div class="testi">
+          <p>„Die wöchentliche Struktur hat den Unterschied gemacht. Ohne Plan hätte ich es nicht durchgezogen.“</p>
+          <div class="who">— Platzhalter-Stimme, Transformation</div>
+        </div>
+        <div class="testi">
+          <p>„Ein System, kein loses PDF. Genau das hat mir gefehlt.“</p>
+          <div class="who">— Platzhalter-Stimme, Mastery</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:50px;">
+      <div>
+        <span class="eyebrow">Kontakt</span>
+        <h2 style="margin-top:14px;font-size:30px;">Fragen vorab?</h2>
+        <p style="color:var(--ink-soft);margin-top:14px;">Schreib eine E-Mail — Antwort in der Regel innerhalb von 48 Stunden.</p>
+        <a class="btn-primary" style="margin-top:18px;" href="mailto:marytarpah@protonmail.com">marytarpah@protonmail.com</a>
+      </div>
+      <div class="note-box">
+        <strong>Hinweis:</strong> Diese Seite dient aktuell als Geschäftsdarstellung. Die Zahlungsabwicklung wird in Kürze über einen Zahlungsdienstleister angebunden. Bis dahin erfolgt die Buchung formlos per E-Mail-Anfrage.
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ====================== IMPRESSUM ====================== -->
+<div id="view-impressum" class="legal-view">
+  <div class="legal-wrap">
+    <a class="back-link" href="#home" onclick="go('home')">← Zurück zur Startseite</a>
+    <h1>Impressum</h1>
+    <span class="updated">Angaben gemäß § 5 DDG</span>
+
+    <h2>Diensteanbieterin</h2>
+    <p>
+      Mary Leong Tarpah<br>
+      handelnd unter der Bezeichnung „Mary Tarpah Mindset“<br>
+      Hintergasse 16<br>
+      64589 Stockstadt am Rhein<br>
+      Deutschland
+    </p>
+
+    <h2>Rechtsform</h2>
+    <p>Einzelunternehmen</p>
+
+    <h2>Kontakt</h2>
+    <p>E-Mail: marytarpah@protonmail.com</p>
+
+    <h2>Umsatzsteuer</h2>
+    <p>Es wird Umsatzsteuer gemäß § 19 UStG (Kleinunternehmerregelung) nicht erhoben. <em>[Vorbehaltlich Prüfung durch eine Steuerberatung — siehe Hinweis im Chat.]</em></p>
+
+    <h2>Verbraucherstreitbeilegung</h2>
+    <p>Als Kleinstunternehmen mit weniger als 10 Beschäftigten sind wir gemäß § 36 Abs. 3 VSBG nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen, und sind hierzu auch nicht bereit.</p>
+
+    <h2>Verantwortlich für den Inhalt gem. § 18 Abs. 2 MStV</h2>
+    <p>Mary Leong Tarpah, Anschrift wie oben.</p>
+  </div>
+</div>
+
+<!-- ====================== AGB ====================== -->
+<div id="view-agb" class="legal-view">
+  <div class="legal-wrap">
+    <a class="back-link" href="#home" onclick="go('home')">← Zurück zur Startseite</a>
+    <h1>Allgemeine Geschäftsbedingungen</h1>
+    <span class="updated">Stand: Juni 2026</span>
+
+    <h2>1. Geltungsbereich</h2>
+    <p>Diese AGB gelten für alle Verträge über den Kauf digitaler Inhalte (PDF-Programme zum Thema Mindset &amp; Persönlichkeitsentwicklung) zwischen Mary Leong Tarpah, handelnd unter „Mary Tarpah Mindset“ (nachfolgend „Anbieterin“), und ihren Kundinnen und Kunden.</p>
+
+    <h2>2. Vertragsschluss</h2>
+    <p>Die Darstellung der Programme auf dieser Website stellt kein bindendes Angebot dar, sondern eine Aufforderung zur Bestellung. Der Vertrag kommt durch die Bestätigung der Anbieterin nach Eingang der Bestellung bzw. nach Zahlungseingang zustande.</p>
+
+    <h2>3. Leistungsgegenstand</h2>
+    <p>Gegenstand des Vertrags sind digitale Inhalte (PDF-Dokumente) zu Mindset- und Persönlichkeitsentwicklungsthemen. Es handelt sich um Materialien zur eigenständigen Anwendung, nicht um Coaching-, Therapie- oder Heilbehandlungsleistungen. Die Inhalte ersetzen keine medizinische, psychotherapeutische oder rechtliche Beratung.</p>
+
+    <h2>4. Preise und Zahlung</h2>
+    <p>Es gelten die zum Zeitpunkt der Bestellung auf der Website angegebenen Preise. Diese verstehen sich gemäß § 19 UStG ohne Ausweis der Umsatzsteuer. Die Zahlung erfolgt über die von der Anbieterin angegebenen Zahlungswege.</p>
+
+    <h2>5. Lieferung digitaler Inhalte</h2>
+    <p>Nach Zahlungseingang erhält die Kundin/der Kunde die digitalen Inhalte per E-Mail bzw. über einen Download-Link zur Verfügung gestellt.</p>
+
+    <h2>6. Widerrufsrecht</h2>
+    <p>Verbraucherinnen und Verbrauchern steht grundsätzlich ein gesetzliches Widerrufsrecht zu. Einzelheiten ergeben sich aus der gesonderten <a href="#widerruf" onclick="go('widerruf')">Widerrufsbelehrung</a>. Das Widerrufsrecht erlischt vorzeitig, wenn die Anbieterin mit der Ausführung des Vertrags begonnen hat, nachdem die Kundin/der Kunde ausdrücklich zugestimmt hat, dass mit der Vertragsausführung vor Ablauf der Widerrufsfrist begonnen wird, und bestätigt hat, dass sie/er dadurch ihr/sein Widerrufsrecht verliert.</p>
+
+    <h2>7. Nutzungsrechte</h2>
+    <p>Mit vollständiger Bezahlung erhält die Kundin/der Kunde ein einfaches, nicht übertragbares Nutzungsrecht zur persönlichen Nutzung der Inhalte. Eine Weitergabe, Vervielfältigung oder Veröffentlichung der Inhalte gegenüber Dritten ist ohne ausdrückliche Zustimmung der Anbieterin nicht gestattet.</p>
+
+    <h2>8. Haftung</h2>
+    <p>Die Anbieterin haftet unbeschränkt für Vorsatz und grobe Fahrlässigkeit sowie nach den Vorschriften des Produkthaftungsgesetzes. Für leichte Fahrlässigkeit haftet die Anbieterin nur bei Verletzung wesentlicher Vertragspflichten und begrenzt auf den vertragstypisch vorhersehbaren Schaden. Die Inhalte stellen keine medizinische oder psychotherapeutische Behandlung dar; eine Haftung für den ausbleibenden Erfolg eigenständiger Anwendung der Übungen ist ausgeschlossen.</p>
+
+    <h2>9. Streitbeilegung</h2>
+    <p>Als Kleinstunternehmen sind wir gemäß § 36 Abs. 3 VSBG nicht zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle verpflichtet und hierzu auch nicht bereit.</p>
+
+    <h2>10. Schlussbestimmungen</h2>
+    <p>Es gilt deutsches Recht unter Ausschluss des UN-Kaufrechts. Sollte eine Bestimmung dieser AGB unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.</p>
+  </div>
+</div>
+
+<!-- ====================== DATENSCHUTZ ====================== -->
+<div id="view-datenschutz" class="legal-view">
+  <div class="legal-wrap">
+    <a class="back-link" href="#home" onclick="go('home')">← Zurück zur Startseite</a>
+    <h1>Datenschutzerklärung</h1>
+    <span class="updated">Stand: Juni 2026</span>
+
+    <h2>1. Verantwortliche Stelle</h2>
+    <p>Mary Leong Tarpah, Hintergasse 16, 64589 Stockstadt am Rhein. E-Mail: marytarpah@protonmail.com</p>
+
+    <h2>2. Allgemeines zur Datenverarbeitung</h2>
+    <p>Wir verarbeiten personenbezogene Daten nur, soweit dies zur Bereitstellung der Website und unserer Inhalte erforderlich ist, sowie auf Grundlage der gesetzlichen Erlaubnistatbestände des Art. 6 DSGVO.</p>
+
+    <h2>3. Bereitstellung der Website / Server-Logfiles</h2>
+    <p>Beim Aufruf dieser Website erhebt der Hosting-Anbieter automatisch technische Verbindungsdaten (z. B. IP-Adresse, Datum und Uhrzeit des Zugriffs, aufgerufene Seite, Browsertyp). Dies dient der technischen Bereitstellung und Sicherheit der Website (Art. 6 Abs. 1 lit. f DSGVO).</p>
+
+    <h2>4. Eingebundene Schriftarten</h2>
+    <p>Diese Website nutzt zur einheitlichen Darstellung Schriftarten von Google Fonts, die beim Seitenaufruf vom Server des Anbieters in den USA geladen werden, wobei die IP-Adresse übertragen wird (Art. 6 Abs. 1 lit. f DSGVO). <em>[Hinweis: Für den produktiven Betrieb wird empfohlen, die Schriftarten lokal zu hosten, um diese Datenübertragung vollständig zu vermeiden — siehe Hinweis im Chat.]</em></p>
+
+    <h2>5. Kontaktaufnahme</h2>
+    <p>Bei Kontaktaufnahme per E-Mail werden die mitgeteilten Daten zur Bearbeitung der Anfrage verarbeitet (Art. 6 Abs. 1 lit. b DSGVO).</p>
+
+    <h2>6. Zahlungsabwicklung</h2>
+    <p>Zur Abwicklung von Zahlungen wird ein externer Zahlungsdienstleister eingebunden. Hierbei werden die zur Zahlungsabwicklung erforderlichen Daten an den jeweiligen Anbieter übermittelt (Art. 6 Abs. 1 lit. b DSGVO). Es gelten ergänzend die Datenschutzhinweise des jeweiligen Zahlungsdienstleisters. <em>[Sobald der Anbieter feststeht, wird dieser Abschnitt um den konkreten Namen und Link zur Datenschutzerklärung ergänzt.]</em></p>
+
+    <h2>7. Bereitstellung digitaler Inhalte</h2>
+    <p>Nach Zahlungseingang werden die erworbenen Inhalte per E-Mail an die angegebene E-Mail-Adresse versendet (Art. 6 Abs. 1 lit. b DSGVO).</p>
+
+    <h2>8. Cookies</h2>
+    <p>Diese Website verwendet aktuell ausschließlich technisch notwendige Funktionen ohne Tracking- oder Marketing-Cookies.</p>
+
+    <h2>9. Ihre Rechte</h2>
+    <ul>
+      <li>Auskunft über die zu Ihrer Person gespeicherten Daten (Art. 15 DSGVO)</li>
+      <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
+      <li>Löschung Ihrer Daten (Art. 17 DSGVO)</li>
+      <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+      <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
+      <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
+      <li>Beschwerde bei einer Datenschutzaufsichtsbehörde</li>
+    </ul>
+
+    <h2>10. Änderungen dieser Erklärung</h2>
+    <p>Diese Datenschutzerklärung wird bei Bedarf an geänderte Rechtslagen oder Verarbeitungsprozesse angepasst.</p>
+  </div>
+</div>
+
+<!-- ====================== WIDERRUF ====================== -->
+<div id="view-widerruf" class="legal-view">
+  <div class="legal-wrap">
+    <a class="back-link" href="#home" onclick="go('home')">← Zurück zur Startseite</a>
+    <h1>Widerrufsbelehrung</h1>
+    <span class="updated">Stand: Juni 2026</span>
+
+    <h2>Widerrufsrecht</h2>
+    <p>Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen.</p>
+    <p>Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsschlusses.</p>
+    <p>Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (Mary Leong Tarpah, Hintergasse 16, 64589 Stockstadt am Rhein, E-Mail: marytarpah@protonmail.com) mittels einer eindeutigen Erklärung (z. B. per E-Mail oder Brief) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren. Sie können dafür das untenstehende Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist.</p>
+    <p>Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absenden.</p>
+
+    <h2>Folgen des Widerrufs</h2>
+    <p>Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf bei uns eingegangen ist. Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, das Sie bei der ursprünglichen Transaktion eingesetzt haben, es sei denn, mit Ihnen wurde ausdrücklich etwas anderes vereinbart.</p>
+
+    <h2>Besonderer Hinweis auf vorzeitiges Erlöschen des Widerrufsrechts</h2>
+    <p>Ihr Widerrufsrecht erlischt vorzeitig, wenn wir mit der Ausführung des Vertrags — also der Bereitstellung der digitalen Inhalte — begonnen haben, nachdem Sie</p>
+    <ol>
+      <li>ausdrücklich zugestimmt haben, dass wir mit der Ausführung des Vertrags vor Ablauf der Widerrufsfrist beginnen, und</li>
+      <li>Ihre Kenntnis davon bestätigt haben, dass Sie durch Ihre Zustimmung mit Beginn der Ausführung des Vertrags Ihr Widerrufsrecht verlieren.</li>
+    </ol>
+    <p>Diese Zustimmung erfolgt über die Checkbox im Bestellprozess.</p>
+
+    <h2>Muster-Widerrufsformular</h2>
+    <div class="formular">
+      <p style="font-size:13px;"><em>(Wenn Sie den Vertrag widerrufen wollen, füllen Sie bitte dieses Formular aus und senden Sie es zurück.)</em></p>
+      <p style="font-size:13.5px;margin-bottom:6px;">An: Mary Leong Tarpah, Hintergasse 16, 64589 Stockstadt am Rhein, marytarpah@protonmail.com</p>
+      <p style="font-size:13.5px;margin-bottom:6px;">Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über den Kauf der folgenden digitalen Inhalte (*):</p>
+      <p style="font-size:13.5px;margin-bottom:6px;">Bestellt am (*) / erhalten am (*):</p>
+      <p style="font-size:13.5px;margin-bottom:6px;">Name des/der Verbraucher(s):</p>
+      <p style="font-size:13.5px;margin-bottom:6px;">Anschrift des/der Verbraucher(s):</p>
+      <p style="font-size:13.5px;margin-bottom:6px;">Unterschrift des/der Verbraucher(s) (nur bei Mitteilung auf Papier):</p>
+      <p style="font-size:13.5px;margin-bottom:0;">Datum:</p>
+      <p style="font-size:11.5px;margin-top:10px;color:var(--fog-dark);">(*) Unzutreffendes streichen.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div class="footer-col">
+      <h4>Mary Tarpah Mindset</h4>
+      <a href="mailto:marytarpah@protonmail.com">marytarpah@protonmail.com</a>
+    </div>
+    <div class="footer-col">
+      <h4>Programme</h4>
+      <a href="#home" onclick="go('home');setTimeout(()=>document.getElementById('programme').scrollIntoView(),50)">Fundament</a>
+      <a href="#home" onclick="go('home');setTimeout(()=>document.getElementById('programme').scrollIntoView(),50)">Transformation</a>
+      <a href="#home" onclick="go('home');setTimeout(()=>document.getElementById('programme').scrollIntoView(),50)">Mastery</a>
+    </div>
+    <div class="footer-col">
+      <h4>Rechtliches</h4>
+      <a href="#impressum" onclick="go('impressum')">Impressum</a>
+      <a href="#agb" onclick="go('agb')">AGB</a>
+      <a href="#datenschutz" onclick="go('datenschutz')">Datenschutz</a>
+      <a href="#widerruf" onclick="go('widerruf')">Widerruf</a>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">© 2026 Mary Leong Tarpah — Mary Tarpah Mindset</div>
+</footer>
+
+<script>
+  function go(view){
+    document.querySelectorAll('#view-home, .legal-view').forEach(el=>el.classList.remove('active'));
+    var target=document.getElementById('view-'+view);
+    if(target){target.classList.add('active');}
+    window.scrollTo({top:0,behavior:'instant'});
+    history.replaceState(null,'','#'+view);
+  }
+  // init from hash
+  (function(){
+    var h=window.location.hash.replace('#','');
+    var valid=['home','impressum','agb','datenschutz','widerruf'];
+    go(valid.includes(h)?h:'home');
+  })();
+
+  // ---- Hero shift slider ----
+  function hexToRgb(hex){
+    var v=parseInt(hex.slice(1),16);
+    return [(v>>16)&255,(v>>8)&255,v&255];
+  }
+  function lerp(a,b,t){return Math.round(a+(b-a)*t);}
+  var fogDark=hexToRgb('#3A3F3D'), amber=hexToRgb('#D8A650');
+  var negPhrases=['„Das schaffe ich sowieso nicht.“','„Ich bin einfach nicht gut genug.“','„Das klappt bei mir eh nie.“'];
+  var posPhrases=['„Ich lerne gerade, wie es geht.“','„Ich werde mit jedem Versuch besser.“','„Ich entscheide, wie ich darüber denke.“'];
+  var slider=document.getElementById('shiftSlider');
+  var bg=document.getElementById('shiftBg');
+  var pn=document.getElementById('phraseNeg');
+  var pp=document.getElementById('phrasePos');
+  slider.addEventListener('input',function(){
+    var t=this.value/100;
+    var r=lerp(fogDark[0],amber[0],t), g=lerp(fogDark[1],amber[1],t), b=lerp(fogDark[2],amber[2],t);
+    bg.style.background='radial-gradient(circle at 30% 20%, rgb('+r+','+g+','+b+'), transparent 70%)';
+    pn.style.opacity=1-t;
+    pp.style.opacity=t;
+    var idx=Math.min(2,Math.floor(t*3));
+    pn.textContent=negPhrases[idx];
+    pp.textContent=posPhrases[idx];
+  });
+
+  // ---- Consent checkboxes / buy buttons ----
+  function toggleBuy(checkbox){
+    var btn=document.querySelector('.btn-buy[data-tier="'+checkbox.dataset.tier+'"]');
+    btn.disabled=!checkbox.checked;
+  }
+  function buy(btn){
+    if(btn.disabled)return;
+    var tier=btn.dataset.tier, price=btn.dataset.price;
+    var note=btn.parentElement.querySelector('.tier-note');
+    var subject=encodeURIComponent('Anfrage: Programm '+tier+' ('+price+')');
+    var body=encodeURIComponent('Hallo Mary,\n\nich interessiere mich für das Programm "'+tier+'" ('+price+') und bestätige meine Zustimmung zum vorzeitigen Beginn sowie den damit verbundenen Verlust des Widerrufsrechts gemäß der Checkbox auf der Website.\n\nMein Name:\nMeine Anschrift:\n\nViele Grüße');
+    window.location.href='mailto:marytarpah@protonmail.com?subject='+subject+'&body='+body;
+    note.textContent='Mail-Entwurf wird geöffnet …';
+  }
+
+  // mobile nav (simple toggle placeholder for future use)
+</script>
+
+</body>
+</html>
